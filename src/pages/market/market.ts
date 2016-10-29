@@ -8,6 +8,9 @@ import { EventPage } from '../../pages/event/event';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+declare var google;
+
 @Component({
   selector: 'page-market',
   templateUrl: 'market.html'

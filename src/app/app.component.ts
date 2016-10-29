@@ -27,4 +27,11 @@ export class MyApp {
       this.navCtrl.setRoot(MarketPage);
     }, 100);
   }
+
+  openProfile(){
+    setTimeout(()=>{
+      this.menuCtrl.close();
+      this.navCtrl.setRoot(ProfilePage);
+    }, 100);
+  }
 }
