@@ -14,3 +14,356 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@function darkenPrimary($value: 0){
+  @return darken(map-get($colors, primary), $value + 4%);
+}
+
+sidemenu ion-backdrop {
+}
+
+.sidemenu ion-content {
+  background-color: #eee;
+}
+
+.sidemenu .menu-inner {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+.sidemenu .menu-list {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+
+.menu-list .item {
+  background-color: unset;
+  border-top: 1px solid rgba(map-get($colors, secondary), 0.0);
+  font-size: 1.6rem;
+  color: #999;
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+.menu-list .item ion-icon {
+  padding-right: 10px;
+  font-size: 3.2rem;
+  vertical-align: middle;
+}
+
+.menu-list .item ion-label {
+  margin: 13px 8px 10px 0;
+}
+
+.menu-list > .item:first-child,
+.menu-list > .item-wrapper:first-child .item {
+  border-top: none;
+}
+
+.menu-list .item .item-inner{
+  border-bottom: none;
+}
+.menu-list > .item:last-child,
+.menu-list > .item-wrapper:last-child .item {
+  border-bottom: 1px solid rgba(map-get($colors, secondary), 0.0);
+}
+
+.menu-dashboard {
+  width: 100%;
+  height: 40%;
+  box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.1);
+  background-color: map-get($colors, primary);
+}
+
+.header-borderless {
+	padding: 5px 0;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.header-borderless.green {
+	background-color: map-get($colors, primary);
+	color: #fff;
+}
+
+.header-borderless:after {
+	background-image: none;
+}
+
+.header-borderless ion-col {
+	text-align: center;
+	margin-left: -5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.header-borderless button {
+	color: #fff;
+	min-width: 4rem !important;
+}
+
+.header-title {
+	text-align: center;
+	line-height: 4.1rem;
+	padding-right: 10px;
+}
+
+.profile-dashboard {
+	width: 100%;
+	top: 100;
+	right: 0;
+	left: 0;
+	min-height: 270px;
+	display: table;
+	background-color: map-get($colors, primary);
+	text-align: center;
+	padding-top: 10px;
+	z-index: 2;
+}
+
+.profile-dashboard:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 80%;
+}
+
+.profile-dashboard .avatar {
+	position: relative;
+	width: 170px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 auto;
+	border-radius: 100%;
+	border: 2px #fff solid;
+}
+
+.profile-dashboard p {
+	color: #fff;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+}
+
+.profile-dashboard p+p {
+	color: #0D331D;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 1.2rem;
+	font-weight: bold;
+	opacity: 0.6;
+	margin-top: -10px;
+}
+
+.scrollover {
+	position: relative;
+	z-index: 3;
+	background-color: #fff;
+	height: 100%;
+}
+
+
+.scrollover > p {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #444	;
+}
+
+.fullwidth-list.list-md .item-block .item-inner,
+.fullwidth-list .item-md.item-block .item-inner {
+    border-bottom: 0px solid #dedede;
+}
+
+.fullwidth-list {
+	margin: 0 0 0 0 !important;
+}
+
+.fullwidth-list ion-item {
+    border-bottom: 1px solid #dedede;
+}
+
+.fullwidth-list ion-item-divider {
+	background-color: #eee;
+	color: #555;
+}
+
+.fullwidth-list.light ion-item-divider {
+	background-color: #fff;
+	color: #555;
+}
+
+.normalwrap-item ion-label {
+	white-space: normal !important;
+}
+
+.event-map {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 300px;
+}
+
+.fund-container {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	padding: 1px 16px 0px 16px;
+	background-color: #eee;
+	box-shadow: 0px -3px 10px -4px rgba(0,0,0,0.25);
+}
+
+.fund-container figure {
+	position: absolute;
+	top: -1px;
+}
+
+.fund-container h1 {
+	line-height: 65px;
+	color: #444;
+	margin-left: 140px;
+}
+
+.fund-container p {
+	line-height: 20px;
+	margin-top: -30px;
+	font-size: 1.1rem;
+	color: #999;
+	margin-left: 140px;
+}
+
+/* Code from https://codepen.io/kunalkamble/pen/XXbWwN */
+
+$configs: (
+	chart-one: (
+		svgSize: 100px,
+		percentage: 100,
+		strokeWidth: 3px,
+		backgroundColor: #305556,
+		foregroundColor: #79be9b,
+		labelColor: #999,
+		labelFontSize: 2.5rem,
+		duration: 3s,
+		animationDelay: 1s
+	),
+	chart-two: (
+		svgSize: 200px,
+		percentage: 50,
+		strokeWidth: 15px,
+		backgroundColor: #305556,
+		foregroundColor: #d0f09e,
+		labelColor: #c6e8d7,
+		labelFontSize: 2.5rem,
+		duration: 3s,
+		animationDelay: 1s
+	),
+	chart-three: (
+		svgSize: 200px,
+		percentage: 75,
+		strokeWidth: 25px,
+		backgroundColor: #305556,
+		foregroundColor: #389967,
+		labelColor: #c6e8d7,
+		labelFontSize: 2.5rem,
+		duration: 3s,
+		animationDelay: 1s
+	)
+);
+
+
+/* ------- DO NOT EDIT BELOW --------- */
+$pi: 3.14;
+$labelData: '';
+@for $i from 0 to 101 {
+	$labelData: $labelData + $i + "%" + '\a';
+}
+
+@each $chart, $param in $configs {
+	
+	$c: (map-get($param, svgSize) - map-get($param, strokeWidth)) * $pi;
+	$cOffSet: (map-get($param, percentage)/100)*$c;
+	
+	.#{$chart} {
+		width: map-get($param, svgSize);
+		height: map-get($param, svgSize);
+		margin: 0;
+		position: relative;
+		
+		&.animate {
+			svg .circle-foreground {
+				animation: offset map-get($param, duration) ease-in-out forwards;
+				animation-delay: map-get($param, animationDelay);
+			}
+			figcaption:after {
+				animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
+				animation-delay: map-get($param, animationDelay);
+			}
+		}
+
+		svg {
+			width: 100%;
+			height: 100%;
+			.circle-background {
+				r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
+				cx: 50%;
+				cy: 50%;
+				fill: none;
+				stroke: map-get($param, backgroundColor);
+				stroke-width: map-get($param, strokeWidth);
+			}
+			.circle-foreground {
+				@extend .circle-background;
+				stroke: map-get($param, foregroundColor);
+				stroke-dasharray: $cOffSet $c;
+				stroke-dashoffset: $cOffSet;
+				stroke-linecap: round;
+				transform-origin: 50% 50%;
+				transform: rotate(-90deg);
+			}
+		}
+		figcaption {
+			display: inline-block;
+			width: 100%;
+			height: map-get($param, labelFontSize);
+			overflow: hidden;
+			text-align: center;
+			color: map-get($param, labelColor);
+			position: absolute;
+			top: calc(50% - #{map-get($param, labelFontSize)/2});
+			left: 0;
+			font-size: 0;
+			&:after {
+				display: inline-block;
+				content: $labelData;
+				white-space: pre;
+				font-size: map-get($param, labelFontSize);
+				line-height: map-get($param, labelFontSize);
+			}
+		}
+	}
+	@keyframes #{$chart}-label {
+		100% {
+			transform: translateY(map-get($param, labelFontSize) * (-(map-get($param, percentage))));
+		}
+	}
+}
+@keyframes offset {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+
+/* codepen styling only */
+@import url(https://fonts.googleapis.com/css?family=Abel);
+body {
+	background: #272b31;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+figure {
+	margin: 1rem!important;
+}
+figcaption {
+	font-family: 'Abel', sans-serif;
+}

@@ -1,0 +1,31 @@
+<ion-menu [content]="content" type="overlay" class="sidemenu">
+  <ion-content >
+    <div class="menu-dashboard">
+    </div>
+    <ion-list class="menu-list">
+      <ion-item menuClose tappable >
+        <ion-icon item-right name="ios-contact-outline"></ion-icon>
+        Profile
+      </ion-item>
+      <ion-item menuClose tappable>
+        <ion-icon item-right name="ios-navigate-outline"></ion-icon>
+        My Events
+      </ion-item>
+      <ion-item menuClose tappable>
+        <ion-icon item-right name="ios-globe-outline"></ion-icon>
+        Market
+      </ion-item>
+      <ion-item menuClose tappable>
+        <ion-icon item-right name="ios-settings-outline"></ion-icon>
+        Settings
+      </ion-item>
+      <ion-item tappable menuClose>
+        <ion-icon item-right name="ios-arrow-dropright-outline"></ion-icon>
+        Logout
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

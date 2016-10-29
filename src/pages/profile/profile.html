@@ -1,0 +1,56 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-borderless green">
+	<ion-grid>
+		<ion-row>
+			<ion-col width-20>
+				<button ion-button color="light" icon-only clear>
+					<ion-icon name="ios-arrow-back" tappable></ion-icon>
+				</button>
+			</ion-col>
+			<ion-col width-60 class="header-title">
+			Joe Doe
+			</ion-col>
+			<ion-col width-20>
+				<button ion-button color="light" icon-only clear menuToggle>
+					<ion-icon name="md-menu" tappable></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-header>
+
+<ion-content>
+	<div class="profile-dashboard">
+		<img class="avatar" src="http://image.flaticon.com/icons/svg/236/236832.svg" />
+		<p>Developer, Entrepeneur</p>
+		<p>Zürich, CH</p>
+	</div>
+	<div class="buffer"></div>
+	<div class="scrollover">
+		<ion-list class="fullwidth-list">
+			<ion-item-divider light>About me</ion-item-divider>
+			<ion-item class="normalwrap-item"><p>
+			Lorem ipsum dolor sit amet, vel et vitae interpretaris, duo errem mnesarchum at, illum mucius ea quo. Sint phaedrum ut qui, postea singulis mei in. 
+			</p></ion-item>
+			<ion-item-divider light>Upcoming Events</ion-item-divider>
+			<ion-item *ngFor="let event of events" tappable (click)="openEvent(event.id)">
+				<ion-avatar item-left>
+			      <img src="{{event.icon}}">
+			    </ion-avatar>
+			    <h2>{{event.name}}</h2>
+    			<p>{{event.street}}, {{event.place}}, {{event.city}}</p>
+			</ion-item>
+			<ion-item-divider light>Achivements</ion-item-divider>
+				<ion-item>
+					<ion-avatar item-left *ngFor="let achivement of achivements" tappable>
+				      <img src="{{achivement}}">
+				    </ion-avatar>
+				</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { TabsPage } from '../pages/tabs/tabs';
+import { MarketPage } from '../pages/market/market';
 
 
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: '../app/app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  @ViewChild('content') navCtrl;
+  rootPage = MarketPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
