@@ -196,7 +196,7 @@ sidemenu ion-backdrop {
 }
 
 .event-map {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	width: 100%;
 	height: 300px;
@@ -229,6 +229,34 @@ sidemenu ion-backdrop {
 	color: #999;
 	margin-left: 140px;
 }
+
+.event-buttons,
+.event-buttons ion-row,
+.event-buttons ion-row ion-col {
+	padding: 0;
+}
+
+.event-buttons button {
+	margin-top: 0;
+	margin-bottom: 0;
+	box-shadow: none;
+	border-right: 1px solid darkenPrimary(2);
+}
+
+.event-buttons button:last-child {
+	border-right: 0;
+}
+
+.searchbar {
+	padding: 0;
+}
+
+
+
+
+
+
+
 
 /* Code from https://codepen.io/kunalkamble/pen/XXbWwN */
 
