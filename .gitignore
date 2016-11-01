@@ -28,8 +28,8 @@ plugins/android.json
 plugins/ios.json
 resources/
 www/
+config/config.ts
 $RECYCLE.BIN/
-
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
