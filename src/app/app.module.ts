@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
 import { EventPage } from '../pages/event/event';
 import { MarketPage } from '../pages/market/market';
+import { EventCreatorPage } from '../pages/event-creator/event-creator'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MarketPage } from '../pages/market/market';
     TabsPage,
     ProfilePage,
     EventPage,
-    MarketPage
+    MarketPage,
+    EventCreatorPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,8 @@ import { MarketPage } from '../pages/market/market';
     TabsPage,
     ProfilePage,
     EventPage,
-    MarketPage
+    MarketPage,
+    EventCreatorPage
   ],
   providers: []
 })

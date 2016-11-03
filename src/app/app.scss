@@ -334,12 +334,19 @@ sidemenu ion-backdrop {
 	padding: 0;
 }
 
+.eventForm .text-input{
+	color: #666;
+}
 
+.form-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
 
-
-
-
-
+.form-padding .input-wrapper {
+	padding-left: 16px !important;
+	padding-right: 16px !important;
+}
 
 /* Code from https://codepen.io/kunalkamble/pen/XXbWwN */
 

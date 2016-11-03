@@ -3,6 +3,7 @@ import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { ProfilePage } from '../pages/profile/profile';
 import { MarketPage } from '../pages/market/market';
+import { EventCreatorPage } from '../pages/event-creator/event-creator'
 import { firebaseConfig } from '../../config/config';
 import firebase from 'firebase';
 
@@ -11,7 +12,7 @@ import firebase from 'firebase';
 })
 export class MyApp {
   @ViewChild('content') navCtrl;
-  rootPage = ProfilePage;
+  rootPage = EventCreatorPage;
 
   constructor(platform: Platform, public menuCtrl: MenuController) {
     
@@ -25,17 +26,26 @@ export class MyApp {
     });
   }
 
-  openMarket(){
+  openPage(page: string){
     setTimeout(()=>{
       this.menuCtrl.close();
-      this.navCtrl.setRoot(MarketPage);
+
+      switch (page) {
+        case "Profile":
+          this.navCtrl.setRoot(ProfilePage);
+          break;
+        case "Market":
+          this.navCtrl.setRoot(MarketPage);
+          break;  
+        case "NewEvent":
+          this.navCtrl.setRoot(EventCreatorPage);
+          break;
+        default:
+          break;
+      }
+
     }, 100);
+
   }
 
-  openProfile(){
-    setTimeout(()=>{
-      this.menuCtrl.close();
-      this.navCtrl.setRoot(ProfilePage);
-    }, 100);
-  }
 }

@@ -64,14 +64,14 @@
 		    </ion-avatar>
 		    <h2>{{events[id].points}} EcoPoints</h2>
 		</ion-item>
-		<ion-item-divider light>Description</ion-item-divider>
+		<ion-item-divider *ngIf="events[id].description" light>Description</ion-item-divider>
 		<ion-item class="normalwrap-item" *ngIf="events[id].description">
 			<p>{{events[id].description}}</p>
 		</ion-item>
 	</ion-list>
 
 	<ion-list class="fullwidth-list dark resource-list" no-lines>
-		<ion-item *ngIf="events[id].resources">
+		<ion-item *ngIf="events[id].resources?.length > 0">
 			<h2 style="text-transform: uppercase;">Needed Resources:</h2>
 		</ion-item>
 		<ion-item tappable *ngFor="let resource of events[id].resources;let i=index" (click)="checkResource(i)">

@@ -3,23 +3,23 @@
     <div class="menu-dashboard">
     </div>
     <ion-list class="menu-list">
-      <ion-item (click)="openProfile()" menuClose tappable >
+      <ion-item (click)="openPage('Profile')" tappable >
         <ion-icon item-right name="ios-contact-outline"></ion-icon>
         Profile
       </ion-item>
-      <ion-item menuClose tappable>
+      <ion-item (click)="openPage('NewEvent')" tappable>
         <ion-icon item-right name="ios-navigate-outline"></ion-icon>
         My Events
       </ion-item>
-      <ion-item (click)="openMarket()" tappable>
+      <ion-item (click)="openPage('Market')" tappable>
         <ion-icon item-right name="ios-globe-outline"></ion-icon>
         Market
       </ion-item>
-      <ion-item menuClose tappable>
+      <ion-item (click)="openPage('')" tappable>
         <ion-icon item-right name="ios-settings-outline"></ion-icon>
         Settings
       </ion-item>
-      <ion-item tappable menuClose>
+      <ion-item (click)="openPage('')" tappable>
         <ion-icon item-right name="ios-arrow-dropright-outline"></ion-icon>
         Logout
       </ion-item>

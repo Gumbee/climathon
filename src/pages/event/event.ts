@@ -16,8 +16,10 @@ declare var google;
 })
 export class EventPage {
 
+	// contains the map's DOM-element
 	private map: any;
 
+	// the id of the event that the user would like to look at
     private id = 0;
 
     private fundPercentage = 0;
@@ -28,7 +30,6 @@ export class EventPage {
 					  {id:3, name:"Clean the River", street:"Magic River", place:"42 Waterland", city:"8001 Zürich", icon:"https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/calendar-256.png", lat:47.3569, long:8.5427, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 56, points: 29, tags:['waterpollution', 'team', 'animals', 'apero', 'eth'], friends: 1, likes: 34, resources:[]}];
 
 	constructor(public navCtrl: NavController, private platform: Platform, private navParams: NavParams, private alertCtrl: AlertController) {
-		this.map = null;
 		this.id = navParams.data.id;
 		this.getFundPercentageAndSponsors();
 	}
@@ -36,6 +37,39 @@ export class EventPage {
 	ionViewDidLoad(){
 		this.initializeMap();
 	}
+
+    getFundPercentageAndSponsors(){
+    	let counter = 0;
+		let fundedBy = "";
+		let eventRes = this.events[this.id].resources;
+
+		if(eventRes.length > 0){
+			for(let i=0;i<eventRes.length;i++){
+				if(eventRes[i].done){
+					counter++;
+					//Only mention the sponsor if he is not mentioned yet
+					if(fundedBy.toLowerCase().indexOf(eventRes[i].doneBy.toLowerCase()) < 0){
+						if(i==eventRes.length-2){
+							fundedBy += eventRes[i].doneBy + " and ";
+						}else if(i==eventRes.length-1){
+							fundedBy += eventRes[i].doneBy;
+						}else{
+							fundedBy += eventRes[i].doneBy + ", ";
+						}
+					}
+				}
+			}
+			this.fundPercentage = counter/eventRes.length*100;
+			if(this.fundPercentage!=100){
+				this.events[this.id].sponsors = "Partially funded by " + fundedBy;
+			}else{
+				this.events[this.id].sponsors = "by " + fundedBy;
+			}
+		}else{
+			this.events[this.id].sponsors = "by nobody because no funds are necessary";
+			this.fundPercentage = 100;
+		}
+    }
 
 	initializeMap() {
         this.platform.ready().then(() => {
@@ -92,37 +126,6 @@ export class EventPage {
 		      ]
 			});
 			alert.present();
-		}
-    }
-
-    getFundPercentageAndSponsors(){
-    	let counter = 0;
-		if(this.events[this.id].resources.length > 0){
-			let fundedBy = "";
-			for(let i=0;i<this.events[this.id].resources.length;i++){
-				if(this.events[this.id].resources[i].done){
-					counter++;
-					//Only mention the sponsor if he is not mentioned yet
-					if(fundedBy.toLowerCase().indexOf(this.events[this.id].resources[i].doneBy.toLowerCase()) < 0){
-						if(i==this.events[this.id].resources.length-2){
-							fundedBy += this.events[this.id].resources[i].doneBy + " and ";
-						}else if(i==this.events[this.id].resources.length-1){
-							fundedBy += this.events[this.id].resources[i].doneBy;
-						}else{
-							fundedBy += this.events[this.id].resources[i].doneBy + ", ";
-						}
-					}
-				}
-			}
-			this.fundPercentage = counter/this.events[this.id].resources.length*100;
-			if(this.fundPercentage!=100){
-				this.events[this.id].sponsors = "Partially funded by " + fundedBy;
-			}else{
-				this.events[this.id].sponsors = "by " + fundedBy;
-			}
-		}else{
-			this.events[this.id].sponsors = "by nobody because no funds are necessary";
-			this.fundPercentage = 100;
 		}
     }
 
