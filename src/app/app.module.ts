@@ -9,6 +9,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { EventPage } from '../pages/event/event';
 import { MarketPage } from '../pages/market/market';
 import { EventCreatorPage } from '../pages/event-creator/event-creator'
+import { DataService } from '../providers/data-service'
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { EventCreatorPage } from '../pages/event-creator/event-creator'
     MarketPage,
     EventCreatorPage
   ],
-  providers: []
+  providers: [
+    DataService
+  ]
 })
 export class AppModule {}

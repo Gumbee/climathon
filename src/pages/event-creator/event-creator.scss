@@ -86,7 +86,7 @@ page-event-creator {
 	}
 
 	.resource-button.button-wp {
-		bottom: 2px;
+		bottom: 2	px;
 	}
 
 	.resource-button ion-icon {
@@ -127,6 +127,63 @@ page-event-creator {
 	.resource-date .datetime-wp, {
 		padding: 13px 0px 13px 16px;
 		color: #666;
+	}
+
+	.successOverlay {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 11;
+	}
+
+	.successOverlay .circle {
+		width: 10rem;
+		height: 10rem;
+		border-radius: 100%;
+		position: absolute;
+		right: -2rem;
+		top: -2rem;
+		background-color: #eee;
+		transition: all 1s ease-in-out;
+		opacity: 1;
+		transform: scale(0.1);
+	}
+
+	.successOverlay .contentStuff {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		transition: all 0.5s ease-in-out;
+		opacity: 0;
+	}
+
+	.contentStuff ion-spinner {
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		display: block;
+		top: 50%;
+  		transform: translateY(-70%);
+	}
+
+	.contentStuff h2 {
+		font-size: 3.5rem;
+		text-align: center;
+		position: relative;
+		top: 50%;
+  		transform: translateY(-120%);
+		color: #666;
+		opacity: 0;
+		transition: all 0.5s ease-in-out;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+	}
+
+	.fadeIn {
+		opacity: 1 !important;
+	}
+
+	.circleIn {
+		transform: scale(100) !important;
 	}
 
 
