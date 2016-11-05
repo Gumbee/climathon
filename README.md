@@ -26,3 +26,8 @@
     ```
     
 4. Done!
+
+## Sneak Peek
+[Sneak Peek: Event Creation](http://i.imgur.com/r8REnDT.gif)
+
+[Sneak Peek: Event Market](http://i.imgur.com/kEclEsj.gifv)
