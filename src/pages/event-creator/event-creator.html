@@ -8,17 +8,12 @@
 	<div  class="circle" [class.circleIn]="eventAnimation.circleIn"></div>
 	<div class="contentStuff" [class.fadeIn]="eventAnimation.fadeIn">
 		<ion-spinner name="crescent" color="primary" *ngIf="eventAnimation.loaderShow"></ion-spinner>
-<<<<<<< HEAD
 		<h2 *ngIf="eventAnimation.textShow" [class.fadeIn]="eventAnimation.textFade">{{eventAnimation.textMsg}}</h2>
-=======
-		<h2 *ngIf="eventAnimation.textShow" [class.fadeIn]="eventAnimation.textFade">Event created.</h2>
->>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 	</div>
 </div>
 <ion-header>
 
   <ion-navbar color="primary">
-<<<<<<< HEAD
   	<ion-buttons end>
 	    <button ion-button clear menuToggle>
 	    	<ion-icon name="md-menu" style="font-size: 2.5rem;margin-right: 0px;"></ion-icon>
@@ -29,17 +24,6 @@
 	    <button ion-button clear (click)="submitForm()" [attr.disabled]="eventForm.name? 
 	    null:true">
 	    	<ion-icon name="md-create" style="font-size: 2.3rem;margin-left: 1.6rem"></ion-icon>
-=======
-  	<ion-buttons left>
-	    <button ion-button clear>
-	    	<ion-icon name="md-menu" style="font-size: 2.5rem;margin-left: 10px;"></ion-icon>
-	    </button>
-    </ion-buttons>
-    <ion-title style="text-align: center;padding-right: 10px;">Create Event</ion-title>
-    <ion-buttons end>
-	    <button ion-button clear (click)="submitForm()">
-	    	<ion-icon name="md-create" style="font-size: 2.3rem;margin-right: 6px"></ion-icon>
->>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 	    </button>
     </ion-buttons>
   </ion-navbar>

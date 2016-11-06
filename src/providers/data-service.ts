@@ -27,15 +27,10 @@ export class DataService {
 	createEvent(data: any){
 		return new Promise((resolve, reject)=>{
 			let reference = this.events.push();
-<<<<<<< HEAD
 			reference.set(data).then(()=>{
 				resolve();
 			}).catch(()=>{
 				reject();
-=======
-			reference.set(data, ()=>{
-				resolve();
->>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 			});
 		})
 	}
