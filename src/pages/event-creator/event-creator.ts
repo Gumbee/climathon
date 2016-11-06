@@ -4,8 +4,17 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ProfilePage } from '../../pages/profile/profile';
 import { DataService } from '../../providers/data-service';
 
+<<<<<<< HEAD
 declare var google;
 
+=======
+/*
+  Generated class for the EventCreator page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 @Component({
   selector: 'page-event-creator',
   templateUrl: 'event-creator.html'
@@ -22,7 +31,10 @@ export class EventCreatorPage {
 		fadeIn: false,
 		textShow: false,
 		textFade: false,
+<<<<<<< HEAD
 		textMsg: 'Event created.',
+=======
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 		loaderShow: false
 	};
 	private eventForm: any = {
@@ -38,8 +50,14 @@ export class EventCreatorPage {
 	constructor(public navCtrl: NavController, private _dataService: DataService) {
 		let date: Date = new Date();
 
+<<<<<<< HEAD
 		this.eventForm.date = date.getFullYear()+"-"+('0' + (date.getMonth()+1)).slice(-2)+"-"+('0' + date.getDate()).slice(-2);
 		this.eventForm.beginTime = ('0' + date.getHours()).slice(-2)+":"+('0' + date.getMinutes()).slice(-2);
+=======
+		this.eventForm.date = date.getFullYear()+"-"+('0' + date.getMonth()).slice(-2)+"-"+('0' + date.getDay()).slice(-2);
+		this.eventForm.beginTime = ('0' + date.getHours()).slice(-2)+":"+('0' + date.getMinutes()).slice(-2);
+
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 	}
 
 	addResource() {
@@ -65,6 +83,7 @@ export class EventCreatorPage {
 	submitForm(){
 		if(this.isValidForm()){
 			this.animateSubmit();
+<<<<<<< HEAD
 			this.getLatLng().then((results)=>{
 				this.eventForm.lat = results[0].geometry.location.lat();
 				this.eventForm.lng = results[0].geometry.location.lng();
@@ -80,10 +99,20 @@ export class EventCreatorPage {
 				});
 			}).catch(()=>{
 				this.submitFailed();
+=======
+			this._dataService.createEvent(this.eventForm).then(()=>{
+				setTimeout(()=>{
+					this.animateText();
+					setTimeout(()=>{
+						this.navCtrl.setRoot(ProfilePage, {}, {animate: true, direction: 'forward'});
+					},2000);
+				}, 2000);
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 			});
 		}
 	}
 
+<<<<<<< HEAD
 	submitFailed(){
 		this.eventAnimation.textMsg = "Creation failed."
 		setTimeout(()=>{
@@ -108,6 +137,8 @@ export class EventCreatorPage {
 		});
 	}
 
+=======
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 	isValidForm(){
 		// TODO: complete form validation
 		if(this.eventForm.name !== undefined && this.eventForm.name.trim() != ''){
@@ -124,7 +155,11 @@ export class EventCreatorPage {
 				this.eventAnimation.fadeIn = true;
 				this.eventAnimation.loaderShow = true;
 			}, 200);
+<<<<<<< HEAD
 		}, 10);
+=======
+		}, 100);
+>>>>>>> 0287daecd3f12c472c4dd2124c41d517a0da8e59
 	}
 
 	animateText(){
