@@ -8,6 +8,9 @@ import { EventPage } from '../../pages/event/event';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+declare var google;
+
 @Component({
   selector: 'page-market',
   templateUrl: 'market.html'
@@ -16,8 +19,6 @@ export class MarketPage {
 
 	private map: any;
     private markers: any[] = [];
-
-    private search: any;
 
     private events = [{id:0, name:"Climathon", street:"Impact Hub Zürich - Colab", place:"131 Sihlquai", city:"8005 Zürich", icon:"https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Html-256.png", lat:47.3859, long:8.5327, fund: 100, sponsors:"Climate-KIC, ImpactHUB and Up", participants: 83, points: 13, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 10, likes: 14},
     				  {id:1, name:"Free The Frogs!", street:"Highway", place:"Limmatquai 144", city:"8001 Zürich", icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Creative-Tail-Animal-frog.svg/2000px-Creative-Tail-Animal-frog.svg.png", lat:47.3769, long:8.5437, fund: 100, sponsors:"Climate-KIC, ImpactHUB and Up", participants: 5, points: 13, tags:['animals', 'children', 'free', 'organized'], friends: 0, likes: 2},
@@ -75,24 +76,25 @@ export class MarketPage {
 			        this.markers.push([marker, i]);
 		        }
 
-		        
-
 	        }, 200);
 	    });
 	}
 
 	onSearchInput(event: any){
 		let val = event.target.value;
-		if (val && val.trim() != '') {
-	      this.filteredEvents = this.events.filter((item) => {
-	      	let found = false;
-	      	for(let tag of item.tags){
-	      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
-	      	}
 
-	        return found ||(item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-	      })
+		if (val && val.trim() != '') {
+			this.filteredEvents = this.events.filter((item) => {
+		      	let found = false;
+		      	
+		      	for(let tag of item.tags){
+		      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
+		      	}
+
+		        return found ||(item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+	      	});
 	    }
+
 	    if(val==''){
 	    	this.filteredEvents = this.events;
 	    }

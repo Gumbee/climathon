@@ -1,0 +1,190 @@
+page-event-creator {
+
+	#content {
+		width: 100%;
+  		height: 100%;
+  		position: relative;
+  		overflow: scroll;
+	}
+
+	.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+		border-bottom-color: #dedede;
+	    box-shadow: inset 0 -1px 0 0 map-get($colors, primary);
+	    box-shadow: none;
+	}
+
+	.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+		border-bottom-color: #dedede;
+	    box-shadow: inset 0 -1px 0 0 #f53d3d;
+	    box-shadow: none;
+	}
+
+	.event-info-container {
+		padding: 10px 0 10px 10px;
+		width: 100%;
+	}
+
+	.event-info-container img {
+		width: 100px;
+		height: 100px;
+		border-radius: 100%;
+		border: 2px solid #ddd;
+		vertical-align: middle;
+	}
+
+	.event-info {
+		position: relative;
+		display: inline-block;
+		padding-left: 20px;
+		max-width: 60%;
+		max-height: 90px;
+		overflow: hidden;
+		vertical-align: middle;
+	}
+
+	.event-info p,
+	.event-info h2 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+	}
+
+	.event-info p {
+		color: #777;
+	}
+
+	.event-info h2 {
+		color: #444;
+	}
+
+	.event-icon-input button {
+		position: absolute;
+		bottom: -1px;
+		left: 12px;
+		filter: grayscale(100%);
+		opacity: 0.35;
+	}
+
+	.event-icon-input button.button-wp {
+		bottom: 6px;
+		left: 15px;
+	}
+
+	.event-icon-input input {
+		padding-left: 25px;
+		padding-bottom: 3px;
+	}
+
+	.event-icon-input .item-button {
+		padding: 0;
+	}
+
+	.resource-button {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+	}
+
+	.resource-button.button-wp {
+		bottom: 2	px;
+	}
+
+	.resource-button ion-icon {
+		margin-left: 5px;
+	}
+
+	.resource-input {
+		padding-right: 100px;
+	}
+
+	.resourceItem ion-label {
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+
+	.resourceItem ion-label p {
+		font-size: 1.8rem;
+		padding-top: 5px;
+	}
+
+	.resourceButton .input-wrapper {
+		padding-right: 0px !important;
+	}
+
+	.resourceButton ion-grid,
+	.resourceButton ion-row,
+	.resourceButton ion-col {
+		padding: 0px;
+	}
+
+	.resourceButton ion-buttons,
+	.resourceButton button {
+		margin: 0px;
+	}
+
+	.resource-date .datetime-md,
+	.resource-date .datetime-ios,
+	.resource-date .datetime-wp, {
+		padding: 13px 0px 13px 16px;
+		color: #666;
+	}
+
+	.successOverlay {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 11;
+	}
+
+	.successOverlay .circle {
+		width: 10rem;
+		height: 10rem;
+		border-radius: 100%;
+		position: absolute;
+		left: -1.5rem;
+		top: -2rem;
+		background-color: #eee;
+		transition: all 1s ease-in-out;
+		opacity: 1;
+		transform: scale(0.1);
+	}
+
+	.successOverlay .contentStuff {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		transition: all 0.5s ease-in-out;
+		opacity: 0;
+	}
+
+	.contentStuff ion-spinner {
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		display: block;
+		top: 50%;
+  		transform: translateY(-70%);
+	}
+
+	.contentStuff h2 {
+		font-size: 3.5rem;
+		text-align: center;
+		position: relative;
+		top: 50%;
+  		transform: translateY(-120%);
+		color: #666;
+		opacity: 0;
+		transition: all 0.5s ease-in-out;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+	}
+
+	.fadeIn {
+		opacity: 1 !important;
+	}
+
+	.circleIn {
+		transform: scale(100) !important;
+	}
+
+
+}

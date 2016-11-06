@@ -191,6 +191,69 @@ sidemenu ion-backdrop {
 	color: #555;
 }
 
+.fullwidth-list.dark ion-item-divider {
+	background-color: #ccc;
+	color: #555;
+}
+
+.resource-list .item-md {
+	background-color: #ddd;
+	border-color: #bbb;
+	color: #444;
+}
+
+.resource-list p{
+	color: #999;
+	font-size: 1.8rem;
+	padding-bottom: 3px;
+	font-weight: lighter;
+}
+
+.resource-list p:first-child {
+	color: #666;
+	margin-left: 20px;
+	margin: 0 0 0 20px !important;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	font-size: 1.7rem;
+	display: table;
+	position: relative;
+	transition: all 2s cubic-bezier(.55, 0, .1, 1);
+	text-transform: uppercase;
+}
+
+.resource-list p.done {
+	color: #999;
+}
+
+.resource-list p.done:after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin-top: -0.6em;
+	background-color: #999;
+	transform-origin: center left;
+	animation: strikethrough 2s 0s cubic-bezier(.55, 0, .1, 1) 1;
+}
+
+
+.resource-list ion-label {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+
+@keyframes strikethrough {
+		from {
+				transform: scaleX(0);
+		}
+		to {
+				transform: scaleX(1);
+		}
+}
+
 .normalwrap-item ion-label {
 	white-space: normal !important;
 }
@@ -214,12 +277,17 @@ sidemenu ion-backdrop {
 .fund-container figure {
 	position: absolute;
 	top: -1px;
+	left: 7px;
+}
+
+.fund-container h1,
+.fund-container p {
+	margin-left: 127px;
 }
 
 .fund-container h1 {
 	line-height: 65px;
 	color: #444;
-	margin-left: 140px;
 }
 
 .fund-container p {
@@ -227,7 +295,6 @@ sidemenu ion-backdrop {
 	margin-top: -30px;
 	font-size: 1.1rem;
 	color: #999;
-	margin-left: 140px;
 }
 
 .event-buttons,
@@ -247,16 +314,39 @@ sidemenu ion-backdrop {
 	border-right: 0;
 }
 
+.event-buttons ion-fab ion-fab-list .fab-md.fab-in-list {
+	border: 0;
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.25);
+	background-color: #3498db;
+	color: #fff;
+}
+
+.event-buttons ion-fab-list[side=left] .fab-in-list, ion-fab-list[side=right] .fab-in-list {
+    margin: 0 15px;
+}
+
+.event-buttons ion-fab button.activated {
+	border: 0;
+	box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.45);
+}
+
 .searchbar {
 	padding: 0;
 }
 
+.eventForm .text-input{
+	color: #666;
+}
 
+.form-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
 
-
-
-
-
+.form-padding .input-wrapper {
+	padding-left: 16px !important;
+	padding-right: 16px !important;
+}
 
 /* Code from https://codepen.io/kunalkamble/pen/XXbWwN */
 
@@ -273,12 +363,12 @@ $configs: (
 		animationDelay: 1s
 	),
 	chart-two: (
-		svgSize: 200px,
+		svgSize: 100px,
 		percentage: 50,
-		strokeWidth: 15px,
+		strokeWidth: 3px,
 		backgroundColor: #305556,
-		foregroundColor: #d0f09e,
-		labelColor: #c6e8d7,
+		foregroundColor: #79be9b,
+		labelColor: #999,
 		labelFontSize: 2.5rem,
 		duration: 3s,
 		animationDelay: 1s

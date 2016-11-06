@@ -18,9 +18,17 @@
 	<div class="event-map" id="map"></div>
 	<div style="width: 100%;height: 300px;"></div>
 	<div class="fund-container">
-		<h1>Funded</h1>
-		<p>by {{events[id].sponsors}}</p>
-		<figure class="chart-one animate">
+		<h1 *ngIf="fundPercentage==100">Funded</h1>
+		<h1 *ngIf="fundPercentage!=100"> Not yet funded</h1>
+		<p>{{events[id].sponsors}}</p>
+		<figure class="chart-one animate" *ngIf="fundPercentage==100">
+			<svg role="img" xmlns="http://www.w3.org/2000/svg">
+				<circle class="circle-background"/>
+				<circle class="circle-foreground"/>
+			</svg>
+			<figcaption>25% of all males like donuts.</figcaption>
+		</figure>
+		<figure class="chart-two animate" *ngIf="fundPercentage!=100">
 			<svg role="img" xmlns="http://www.w3.org/2000/svg">
 				<circle class="circle-background"/>
 				<circle class="circle-foreground"/>
@@ -28,6 +36,7 @@
 			<figcaption>25% of all males like donuts.</figcaption>
 		</figure>
 	</div>
+	
 	<ion-list class="fullwidth-list light">
 		<ion-item-divider light>Information</ion-item-divider>
 		<ion-item tappable>
@@ -55,12 +64,33 @@
 		    </ion-avatar>
 		    <h2>{{events[id].points}} EcoPoints</h2>
 		</ion-item>
+		<ion-item-divider *ngIf="events[id].description" light>Description</ion-item-divider>
+		<ion-item class="normalwrap-item" *ngIf="events[id].description">
+			<p>{{events[id].description}}</p>
+		</ion-item>
 	</ion-list>
+
+	<ion-list class="fullwidth-list dark resource-list" no-lines>
+		<ion-item *ngIf="events[id].resources?.length > 0">
+			<h2 style="text-transform: uppercase;">Needed Resources:</h2>
+		</ion-item>
+		<ion-item tappable *ngFor="let resource of events[id].resources;let i=index" (click)="checkResource(i)">
+			<p [class.done]="resource.done">- {{resource.name}}</p>
+			<p item-right [style.opacity]="resource.done">{{resource.doneBy}}</p>
+		</ion-item>
+	</ion-list>
+
 	<ion-grid class="event-buttons">
 		<ion-row>
-			<button ion-button full><ion-icon name="ios-heart" style="margin-right: 12px;"></ion-icon>Like</button>
-			<button ion-button full>Join</button>
-			<button ion-button full>Watch<ion-icon name="md-eye" style="margin-left: 12px;"></ion-icon></button>
+			<ion-fab right>
+				<button ion-fab mini><ion-icon name="arrow-dropleft"></ion-icon></button>
+				<ion-fab-list side="left">
+					<button ion-fab><ion-icon name="md-eye"></ion-icon></button>
+					<button ion-fab><ion-icon name="md-git-pull-request"></ion-icon></button>
+					<button ion-fab><ion-icon name="ios-heart"></ion-icon></button>
+					<button ion-fab><ion-icon name="md-share"></ion-icon></button>
+				</ion-fab-list>
+			</ion-fab>
 		</ion-row>
 	</ion-grid>
 </ion-content>
