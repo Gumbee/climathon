@@ -14,16 +14,16 @@
 <ion-header>
 
   <ion-navbar color="primary">
-  	<ion-buttons end>
+  	<ion-buttons left style="display: none;">
 	    <button ion-button clear menuToggle>
 	    	<ion-icon name="md-menu" style="font-size: 2.5rem;margin-right: 0px;"></ion-icon>
 	    </button>
     </ion-buttons>
     <ion-title style="text-align: center;padding-right: 10px;">Create Event</ion-title>
-    <ion-buttons left>
+    <ion-buttons end>
 	    <button ion-button clear (click)="submitForm()" [attr.disabled]="eventForm.name? 
 	    null:true">
-	    	<ion-icon name="md-create" style="font-size: 2.3rem;margin-left: 1.6rem"></ion-icon>
+	    	<ion-icon name="md-create" style="font-size: 2.3rem;margin-right: 1.0rem"></ion-icon>
 	    </button>
     </ion-buttons>
   </ion-navbar>

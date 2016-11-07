@@ -1,18 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { firebaseConfig } from '../../config/config';
+import firebase from 'firebase';
+
 import { ProfilePage } from '../pages/profile/profile';
 import { MarketPage } from '../pages/market/market';
 import { EventCreatorPage } from '../pages/event-creator/event-creator'
-import { firebaseConfig } from '../../config/config';
-import firebase from 'firebase';
+import { MyEventsPage } from '../pages/my-events/my-events'
 
 @Component({
   templateUrl: '../app/app.html'
 })
 export class MyApp {
   @ViewChild('content') navCtrl;
-  rootPage = EventCreatorPage;
+  rootPage = MyEventsPage;
 
   constructor(platform: Platform, public menuCtrl: MenuController) {
     
@@ -37,6 +39,9 @@ export class MyApp {
         case "Market":
           this.navCtrl.setRoot(MarketPage);
           break;  
+        case "MyEvents":
+          this.navCtrl.setRoot(MyEventsPage);
+          break;
         case "NewEvent":
           this.navCtrl.setRoot(EventCreatorPage);
           break;

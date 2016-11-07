@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
+
 import { ProfilePage } from '../../pages/profile/profile';
 import { DataService } from '../../providers/data-service';
 
@@ -89,7 +90,7 @@ export class EventCreatorPage {
 		setTimeout(()=>{
 			this.animateText();
 			setTimeout(()=>{
-				this.navCtrl.setRoot(EventCreatorPage, {}, {animate: true, direction: 'forward'});
+				this.navCtrl.pop();
 			},2000);
 		},2000);
 	}

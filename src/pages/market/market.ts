@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+
 import { EventPage } from '../../pages/event/event';
-
-/*
-  Generated class for the Market page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 declare var google;
 

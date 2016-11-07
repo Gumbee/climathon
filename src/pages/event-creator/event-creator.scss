@@ -7,6 +7,10 @@ page-event-creator {
   		overflow: scroll;
 	}
 
+	.toolbar-ios ion-title {
+		padding: 0 15px 1px;
+	}
+
 	.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
 		border-bottom-color: #dedede;
 	    box-shadow: inset 0 -1px 0 0 map-get($colors, primary);
@@ -141,7 +145,7 @@ page-event-creator {
 		height: 10rem;
 		border-radius: 100%;
 		position: absolute;
-		left: -1.5rem;
+		right: -1.7rem;
 		top: -2rem;
 		background-color: #eee;
 		transition: all 1s ease-in-out;

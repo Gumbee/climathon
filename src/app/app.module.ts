@@ -9,6 +9,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { EventPage } from '../pages/event/event';
 import { MarketPage } from '../pages/market/market';
 import { EventCreatorPage } from '../pages/event-creator/event-creator'
+import { MyEventsPage } from '../pages/my-events/my-events'
 import { DataService } from '../providers/data-service'
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DataService } from '../providers/data-service'
     ProfilePage,
     EventPage,
     MarketPage,
-    EventCreatorPage
+    EventCreatorPage,
+    MyEventsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +38,8 @@ import { DataService } from '../providers/data-service'
     ProfilePage,
     EventPage,
     MarketPage,
-    EventCreatorPage
+    EventCreatorPage,
+    MyEventsPage
   ],
   providers: [
     DataService
