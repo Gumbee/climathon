@@ -94,6 +94,10 @@ export class MarketPage {
 	    }
 	}
 
+	onClear(){
+    	this.filteredEvents = this.events;
+	}
+
 	openEvent(id: number){
 		setTimeout(()=>{
 			this.navCtrl.push(EventPage, {id: id});

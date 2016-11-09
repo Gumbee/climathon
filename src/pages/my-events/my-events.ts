@@ -22,8 +22,15 @@ export class MyEventsPage {
 
 	private myEvents = [{id:8, name:"Build An App...", street:"Processor Street", place:"MemoryBus", city:"8001 PCLand", icon:"https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/dev-256.png", lat:47.3569, long:8.5427, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 12, points: 29, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 0, likes: 1}];
 
+	private filteredEventsUpcoming;
+	private filteredEventsFinished;
+	private filteredMyEvents;
 
-	constructor(public navCtrl: NavController) {}
+	constructor(public navCtrl: NavController) {
+		this.filteredMyEvents = this.myEvents;
+		this.filteredEventsFinished = this.eventsFinished;
+		this.filteredEventsUpcoming = this.eventsUpcoming;
+	}
 
 	openEvent(id: number){
 		setTimeout(()=>{
@@ -35,6 +42,35 @@ export class MyEventsPage {
 		setTimeout(()=>{
 			this.navCtrl.push(EventCreatorPage);
 		}, 100);
+	}
+
+	onSearchInput(event: any){
+		let val = event.target.value;
+
+		this.filteredEventsFinished = this.getFilteredArray(this.eventsFinished, val);
+		this.filteredEventsUpcoming = this.getFilteredArray(this.eventsUpcoming, val);
+		this.filteredMyEvents = this.getFilteredArray(this.myEvents, val);
+	}
+
+	getFilteredArray(toFilter: any, val: string){
+		if (val && val.trim() != '') {
+			return toFilter.filter((item) => {
+		      	let found = false;
+		      	
+		      	for(let tag of item.tags){
+		      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
+		      	}
+
+		        return found ||(item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+	      	});
+		}
+		return toFilter;
+	}
+
+	onClear(event: any) {
+		this.filteredEventsFinished = this.getFilteredArray(this.eventsFinished, '');
+		this.filteredEventsUpcoming = this.getFilteredArray(this.eventsUpcoming, '');
+		this.filteredMyEvents = this.getFilteredArray(this.myEvents, '');
 	}
 
 }

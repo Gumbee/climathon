@@ -24,9 +24,9 @@
 
 
 <ion-content>
-	<div style="position: fixed;top: 55px;right:0;left: 0;z-index: -1;height: 300px;"><div class="event-map" id="marketMap"></div></div>
+	<div style="position: fixed;right:0;left: 0;z-index: -1;height: 300px;"><div class="event-map" id="marketMap"></div></div>
 	<div style="height: 100%;margin-top:300px;background-color: #fff;">
-		<ion-searchbar (input)="onSearchInput($event)" class="searchbar"></ion-searchbar>
+		<ion-searchbar (input)="onSearchInput($event)" (ionClear)="onClear($event)" class="searchbar"></ion-searchbar>
 		<ion-list class="fullwidth-list">
 			<ion-item-divider light>Near you</ion-item-divider>
 			<ion-item *ngFor="let event of filteredEvents" tappable (click)="openEvent(event.id)">

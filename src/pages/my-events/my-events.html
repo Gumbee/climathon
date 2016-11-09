@@ -26,7 +26,7 @@
 			</button>
 		</ion-buttons>
   	</ion-navbar>
-	<ion-searchbar class="header-searchbar" (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-searchbar class="header-searchbar" (input)="onSearchInput($event)" (ionClear)="onClear($event)"></ion-searchbar>
 
 </ion-header>
 
@@ -40,7 +40,7 @@
 				<button ion-fab mini (click)="createEvent()"><ion-icon name="add"></ion-icon></button>
 			</ion-fab>
 			<ion-item-divider light>Created Events</ion-item-divider>
-			<ion-item *ngFor="let event of myEvents" tappable>
+			<ion-item *ngFor="let event of filteredMyEvents" tappable>
 			    <ion-avatar item-left>
 					<ion-badge *ngIf="event.likes" color="secondary" style="position: absolute;bottom: 7px;left: 10px;">{{event.likes}}<ion-icon name="ios-heart" style="color:red;font-size:1.3rem;margin-left: 2px;"></ion-icon></ion-badge>
 					<img src="{{event.icon}}">
@@ -53,7 +53,7 @@
 
 		<ion-list class="fullwidth-list" *ngSwitchCase="'participating'">
 			<ion-item-divider light>Upcoming</ion-item-divider>
-			<ion-item *ngFor="let event of eventsUpcoming" tappable (click)="openEvent(event.id)">
+			<ion-item *ngFor="let event of filteredEventsUpcoming" tappable (click)="openEvent(event.id)">
 			    <ion-avatar item-left>
 					<ion-badge *ngIf="event.likes" color="secondary" style="position: absolute;bottom: 7px;left: 10px;">{{event.likes}}<ion-icon name="ios-heart" style="color:red;font-size:1.3rem;margin-left: 2px;"></ion-icon></ion-badge>
 					<img src="{{event.icon}}">
@@ -63,7 +63,7 @@
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
 			</ion-item>
 			<ion-item-divider light>Finished Events</ion-item-divider>
-			<ion-item *ngFor="let event of eventsFinished" tappable (click)="openEvent(event.id)">
+			<ion-item *ngFor="let event of filteredEventsFinished" tappable (click)="openEvent(event.id)">
 			    <ion-avatar item-left>
 					<ion-badge *ngIf="event.likes" color="secondary" style="position: absolute;bottom: 7px;left: 10px;">{{event.likes}}<ion-icon name="ios-heart" style="color:red;font-size:1.3rem;margin-left: 2px;"></ion-icon></ion-badge>
 					<img src="{{event.icon}}">
