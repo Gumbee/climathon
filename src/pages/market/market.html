@@ -32,7 +32,7 @@
 			<ion-item *ngFor="let event of filteredEvents" tappable (click)="openEvent(event.id)">
 			    <ion-avatar item-left>
 					<ion-badge *ngIf="event.likes" color="secondary" style="position: absolute;bottom: 7px;left: 10px;">{{event.likes}}<ion-icon name="ios-heart" style="color:red;font-size:1.3rem;margin-left: 2px;"></ion-icon></ion-badge>
-					<img src="https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_lighthouse-256.png">
+					<img src="{{event.icon}}">
 				</ion-avatar>
 				<h2>{{event.name}}</h2>
 				<p>{{event.address}}</p>

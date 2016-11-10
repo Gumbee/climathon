@@ -37,6 +37,7 @@ export class EventCreatorPage {
 		likes: Math.floor(Math.random() * 2)>0?Math.floor(Math.random() * 10):0,
 		friends: Math.floor(Math.random() * 3)>1?Math.floor(Math.random() * 8):0,
 		points: 0,
+		icon: '',
 		resources:[]
 	};
 	private resource: any = {name:'',done:0,doneBy:''};

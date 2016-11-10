@@ -16,7 +16,6 @@ export class MarketPage {
     private markers: any[] = [];
 
     private events: any = [];
-	private otherEvents: any = [];
 	private filteredEvents;
 
 	constructor(public navCtrl: NavController, private platform: Platform, private dataService: DataService) {
@@ -78,13 +77,18 @@ export class MarketPage {
 		let val = event.target.value;
 
 		if (val && val.trim() != '') {
+			console.log("Check1");
 			this.filteredEvents = this.events.filter((item) => {
+				console.log("Check2");
 		      	let found = false;
 		      	
-		      	for(let tag of item.tags){
-		      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
-		      	}
-
+		      	if(item.tags != undefined){
+			      	for(let tag of item.tags){
+						console.log("Check3");
+			      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
+			      	}
+	      		}
+	      		
 		        return found ||(item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 	      	});
 	    }

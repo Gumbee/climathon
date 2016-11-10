@@ -42,30 +42,42 @@ export class EventPage {
     	let counter = 0;
 		let fundedBy = "";
 		let eventRes = this.event.resources;
+		console.log("Start: " + JSON.stringify(eventRes));
 
-		if(eventRes.length > 0){
+		if(eventRes != undefined && eventRes.length > 0){
+
+			let sponsors = [];
+
 			for(let i=0;i<eventRes.length;i++){
 				if(eventRes[i].done){
 					counter++;
 					//Only mention the sponsor if he is not mentioned yet
-					if(fundedBy.toLowerCase().indexOf(eventRes[i].doneBy.toLowerCase()) < 0){
-						if(i==eventRes.length-2){
-							fundedBy += eventRes[i].doneBy + " and ";
-						}else if(i==eventRes.length-1){
-							fundedBy += eventRes[i].doneBy;
-						}else{
-							fundedBy += eventRes[i].doneBy + ", ";
-						}
+					if(sponsors.indexOf(eventRes[i].doneBy) === -1){
+						sponsors.push(eventRes[i].doneBy);
 					}
 				}
 			}
+
+			for(let i=0;i<sponsors.length;i++){
+				if(i == sponsors.length-2){
+					fundedBy += sponsors[i] + ' and ';
+				}else if(i == sponsors.length-1){
+					fundedBy += sponsors[i];
+				}else{
+					fundedBy += sponsors[i] + ", ";
+				}
+			}
+
 			this.fundPercentage = counter/eventRes.length*100;
-			if(this.fundPercentage!=100){
+			if(this.fundPercentage!=100 && counter > 0){
 				this.event.sponsors = "Partially funded by " + fundedBy;
+			}else if(counter < 1){
+				this.event.sponsors = "Become a sponsor now!";
 			}else{
 				this.event.sponsors = "by " + fundedBy;
 			}
 		}else{
+			console.log("RESOUT: " + JSON.stringify(eventRes));
 			this.event.sponsors = "by nobody because no funds are necessary";
 			this.fundPercentage = 100;
 		}
