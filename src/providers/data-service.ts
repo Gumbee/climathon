@@ -35,4 +35,48 @@ export class DataService {
 		})
 	}
 
+	getEvents(){
+		return new Promise((resolve, reject)=>{
+			let reference = this.events;
+
+			reference.once('value', (data)=>{
+				if(data){
+					let events = [];
+					data.forEach((event)=>{
+						let temp = event.val();
+						temp.id = event.key;
+						events.push(temp);
+					});
+					resolve(events);
+				}else{
+					reject([]);
+				}
+			});
+
+		})
+	}
+
+	getEvent(id: string){
+		return new Promise((resolve, reject)=>{
+			let reference = this.events.child(id);
+
+			reference.once('value', (data)=>{
+				if(data){
+					let temp = data.val();
+					temp.id = id;
+
+					if(temp.resources){
+						for(let i=0;i<temp.resources.length;i++){
+							temp.resources[i].id = i;
+						}
+					}
+
+					resolve(temp);
+				}else{
+					reject({});
+				}
+			});
+		})
+	}
+
 }

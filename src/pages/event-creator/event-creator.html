@@ -94,7 +94,7 @@
 						<button ion-button clear color="danger" item-left type="button" style="vertical-align: middle;margin:0 0 1px 0;" (click)="removeResource(i)">
 					      <ion-icon name="md-close"></ion-icon>
 					    </button>
-					    {{resource.resourceName}}
+					    {{resource.name}}
 				    </p>
 				</ion-item>
 
@@ -104,7 +104,7 @@
 						Add Resource 
 						<ion-icon name="md-send"></ion-icon>
 					</button>
-					<ion-input [(ngModel)]="resource.resourceName" name="resource" (keyup.enter)="addResource()" #input class="resource-input" type="text" placeholder=""></ion-input>
+					<ion-input [(ngModel)]="resource.name" name="resource" (keyup.enter)="addResource()" #input class="resource-input" type="text" placeholder=""></ion-input>
 				</ion-item>
 
 				<ion-item style="display: none;">

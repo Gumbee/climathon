@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{events[id].name}}</ion-title>
+    <ion-title>{{event.name}}</ion-title>
     
   </ion-navbar>
 
@@ -20,7 +20,7 @@
 	<div class="fund-container">
 		<h1 *ngIf="fundPercentage==100">Funded</h1>
 		<h1 *ngIf="fundPercentage!=100"> Not yet funded</h1>
-		<p>{{events[id].sponsors}}</p>
+		<p>{{event.sponsors}}</p>
 		<figure class="chart-one animate" *ngIf="fundPercentage==100">
 			<svg role="img" xmlns="http://www.w3.org/2000/svg">
 				<circle class="circle-background"/>
@@ -43,38 +43,37 @@
 			<ion-avatar item-left>
 		      <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-256.png">
 		    </ion-avatar>
-		    <h2>{{events[id].city}}</h2>
-		    <p>{{events[id].street}}, {{events[id].place}}</p>
+		    <h2>{{event.address}}</h2>
 		</ion-item>
 		<ion-item tappable>
 			<ion-avatar item-left>
 		      <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
 		    </ion-avatar>
-		    <h2>{{events[id].participants}} Participants</h2>
+		    <h2>{{event.participants}} Participants</h2>
 		</ion-item>
 		<ion-item tappable>
 			<ion-avatar item-left>
 		      <img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/heart-256.png">
 		    </ion-avatar>
-		    <h2>{{events[id].likes}} Likes</h2>
+		    <h2>{{event.likes}} Likes</h2>
 		</ion-item>
 		<ion-item tappable>
 			<ion-avatar item-left>
 		      <img src="https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Flower_pot.png">
 		    </ion-avatar>
-		    <h2>{{events[id].points}} EcoPoints</h2>
+		    <h2>{{event.points}} EcoPoints</h2>
 		</ion-item>
-		<ion-item-divider *ngIf="events[id].description" light>Description</ion-item-divider>
-		<ion-item class="normalwrap-item" *ngIf="events[id].description">
-			<p>{{events[id].description}}</p>
+		<ion-item-divider *ngIf="event.description" light>Description</ion-item-divider>
+		<ion-item class="normalwrap-item" *ngIf="event.description">
+			<p>{{event.description}}</p>
 		</ion-item>
 	</ion-list>
 
 	<ion-list class="fullwidth-list dark resource-list" no-lines>
-		<ion-item *ngIf="events[id].resources?.length > 0">
+		<ion-item *ngIf="event.resources?.length > 0">
 			<h2 style="text-transform: uppercase;">Needed Resources:</h2>
 		</ion-item>
-		<ion-item tappable *ngFor="let resource of events[id].resources;let i=index" (click)="checkResource(i)">
+		<ion-item tappable *ngFor="let resource of event.resources;let i=index" (click)="checkResource(i)">
 			<p [class.done]="resource.done">- {{resource.name}}</p>
 			<p item-right [style.opacity]="resource.done">{{resource.doneBy}}</p>
 		</ion-item>

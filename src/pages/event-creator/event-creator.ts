@@ -32,9 +32,14 @@ export class EventCreatorPage {
 		address: '',
 		date:'2016-10-04',
 		beginTime:'01:33',
+		// For now we randomly generate the likes and the participants
+		participants: Math.floor(Math.random() * 50),
+		likes: Math.floor(Math.random() * 2)>0?Math.floor(Math.random() * 10):0,
+		friends: Math.floor(Math.random() * 3)>1?Math.floor(Math.random() * 8):0,
+		points: 0,
 		resources:[]
 	};
-	private resource: any = {};
+	private resource: any = {name:'',done:0,doneBy:''};
 
 	constructor(public navCtrl: NavController, private _dataService: DataService) {
 		let date: Date = new Date();
@@ -44,17 +49,14 @@ export class EventCreatorPage {
 	}
 
 	addResource() {
-		if(this.resource.resourceName !== undefined && this.resource.resourceName.trim() != ''){
+		if(this.resource.name !== undefined && this.resource.name.trim() != ''){
 			this.eventForm.resources.push(this.resource);
-			this.resource = {};
+			this.resource = {name:'',done:0,doneBy:''};
 			setTimeout(()=>{
-				console.log(this.content.nativeElement.scrollTop);
-				console.log(this.content.nativeElement.scrollHeight);
 				this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
 				this.input.setFocus();
 			},0);	
 		}
-		console.log(this.eventForm.date);
 	}
 
 	removeResource(id: number){
@@ -125,7 +127,7 @@ export class EventCreatorPage {
 				this.eventAnimation.fadeIn = true;
 				this.eventAnimation.loaderShow = true;
 			}, 200);
-		}, 10);
+		}, 16*4);
 	}
 
 	animateText(){
