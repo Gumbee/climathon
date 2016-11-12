@@ -1,6 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FormGroup, FormControl } from '@angular/forms';
 
 import { ProfilePage } from '../../pages/profile/profile';
 import { DataService } from '../../providers/data-service';
@@ -14,10 +13,10 @@ declare var google;
 export class EventCreatorPage {
 	
 	// contains the DOM of our page	
-	@ViewChild('content') private content: ElementRef;
-	@ViewChild('input') private input: any;
+	@ViewChild('content') content: ElementRef;
+	@ViewChild('input') input: any;
 
-	private eventAnimation: any = {
+	eventAnimation: any = {
 		display: false,
 		circleIn: false,
 		fadeIn: false,
@@ -26,7 +25,7 @@ export class EventCreatorPage {
 		textMsg: 'Event created.',
 		loaderShow: false
 	};
-	private eventForm: any = {
+	eventForm: any = {
 		name:'',
 		description:'',
 		address: '',
@@ -37,10 +36,10 @@ export class EventCreatorPage {
 		likes: Math.floor(Math.random() * 2)>0?Math.floor(Math.random() * 10):0,
 		friends: Math.floor(Math.random() * 3)>1?Math.floor(Math.random() * 8):0,
 		points: 0,
-		icon: '',
+		icon: 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/location-256.png',
 		resources:[]
 	};
-	private resource: any = {name:'',done:0,doneBy:''};
+	resource: any = {name:'',done:0,doneBy:''};
 
 	constructor(public navCtrl: NavController, private _dataService: DataService) {
 		let date: Date = new Date();

@@ -10,21 +10,21 @@ import { EventCreatorPage } from '../../pages/event-creator/event-creator'
 })
 export class MyEventsPage {
 
-	private segment: string = 'myEvents';
+	segment: string = 'myEvents';
 
 	// hardcoded data: will be replaced by data from Firebase soon...
-	private eventsUpcoming = [{id:2, name:"Down with Nestlé!", street:"Bahnhof", place:"Bahnhofstrasse", city:"8001 Zürich", icon:"http://www.rural-water-supply.net/_ressources/images/default/260/7-34-2-1377776946.png", lat:47.3789, long:8.5327, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 19, points: 29, tags:['waterpollution', 'corporation', 'protest', 'ressourcewaste'], friends: 0, likes: 0},
+	eventsUpcoming = [{id:2, name:"Down with Nestlé!", street:"Bahnhof", place:"Bahnhofstrasse", city:"8001 Zürich", icon:"http://www.rural-water-supply.net/_ressources/images/default/260/7-34-2-1377776946.png", lat:47.3789, long:8.5327, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 19, points: 29, tags:['waterpollution', 'corporation', 'protest', 'ressourcewaste'], friends: 0, likes: 0},
 					  {id:3, name:"Clean the River", street:"Magic River", place:"42 Waterland", city:"8001 Zürich", icon:"https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/calendar-256.png", lat:47.3569, long:8.5427, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 56, points: 29, tags:['waterpollution', 'team', 'animals', 'apero', 'eth'], friends: 1, likes: 34}];
 
-	private eventsFinished = [{id:0, name:"Climathon", street:"Impact Hub Zürich - Colab", place:"131 Sihlquai", city:"8005 Zürich", icon:"https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Html-256.png", lat:47.3859, long:8.5327, fund: 100, sponsors:"Climate-KIC, ImpactHUB and Up", participants: 83, points: 13, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 10, likes: 14},
+	eventsFinished = [{id:0, name:"Climathon", street:"Impact Hub Zürich - Colab", place:"131 Sihlquai", city:"8005 Zürich", icon:"https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Html-256.png", lat:47.3859, long:8.5327, fund: 100, sponsors:"Climate-KIC, ImpactHUB and Up", participants: 83, points: 13, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 10, likes: 14},
     				  {id:1, name:"Free The Frogs!", street:"Highway", place:"Limmatquai 144", city:"8001 Zürich", icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Creative-Tail-Animal-frog.svg/2000px-Creative-Tail-Animal-frog.svg.png", lat:47.3769, long:8.5437, fund: 100, sponsors:"Climate-KIC, ImpactHUB and Up", participants: 5, points: 13, tags:['animals', 'children', 'free', 'organized'], friends: 0, likes: 2}];
 
 
-	private myEvents = [{id:8, name:"Build An App...", street:"Processor Street", place:"MemoryBus", city:"8001 PCLand", icon:"https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/dev-256.png", lat:47.3569, long:8.5427, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 12, points: 29, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 0, likes: 1}];
+ 	myEvents = [{id:8, name:"Build An App...", street:"Processor Street", place:"MemoryBus", city:"8001 PCLand", icon:"https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/dev-256.png", lat:47.3569, long:8.5427, fund: 100, sponsors:"ETH Zürich and the City of Zürich", participants: 12, points: 29, tags:['development', 'hacking', 'programming', 'environment', 'ideas', 'creativ', 'hackathon', 'startup'], friends: 0, likes: 1}];
 
-	private filteredEventsUpcoming;
-	private filteredEventsFinished;
-	private filteredMyEvents;
+	filteredEventsUpcoming;
+	filteredEventsFinished;
+	filteredMyEvents;
 
 	constructor(public navCtrl: NavController) {
 		this.filteredMyEvents = this.myEvents;

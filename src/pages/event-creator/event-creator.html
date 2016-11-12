@@ -50,14 +50,14 @@
 
 				<ion-item class="form-padding event-icon-input">
 					<ion-label stacked>Event Name</ion-label>
-					<button ion-button clear color="danger" item-left type="button" disabled (click)="removeResource(i)">
+					<button ion-button clear color="danger" item-left type="button" disabled>
 					      <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-clipboard-128.png" width="23" style="opacity: 0.7;" /></button>
 					<ion-input [(ngModel)]="eventForm.name" name="name" type="text" placeholder="" required></ion-input>
 				</ion-item>
 
 				<ion-item class="form-padding event-icon-input">
 					<ion-label stacked>Address</ion-label>
-					<button ion-button clear color="danger" item-left type="button" disabled (click)="removeResource(i)">
+					<button ion-button clear color="danger" item-left type="button" disabled>
 					      <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-128.png" width="23" /></button>
 					<ion-input ngControl="duration" [(ngModel)]="eventForm.address" name="address" type="text" placeholder="" required></ion-input>
 				</ion-item>
@@ -73,14 +73,14 @@
 
 				<ion-item class="form-padding resource-date event-icon-input">
 				  <ion-label style="margin-left: 30px">Event Begin</ion-label>
-				  <button ion-button clear color="danger" item-left type="button" disabled (click)="removeResource(i)" style="bottom: 1px;">
+				  <button ion-button clear color="danger" item-left type="button" disabled style="bottom: 1px;">
 					      <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/calendar-128.png" width="23" /></button>
 				  <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="DD MMM, YYYY"  max="2020-10-31" [(ngModel)]="eventForm.date" name="date"></ion-datetime>
 				</ion-item>
 
 				<ion-item class="form-padding resource-date event-icon-input">
 				  <ion-label style="margin-left: 30px">Event Time</ion-label>
-				  <button ion-button clear color="danger" item-left type="button" disabled (click)="removeResource(i)" style="bottom: 1px;">
+				  <button ion-button clear color="danger" item-left type="button" disabled style="bottom: 1px;">
 					      <img src="https://cdn1.iconfinder.com/data/icons/freeline/32/alarm_alert_clock_event_history_schedule_time_watch-128.png" width="23" /></button>
 				  <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="eventForm.beginTime" name="beginTime"></ion-datetime>
 				</ion-item>

@@ -19,7 +19,7 @@ export class MyApp {
   constructor(platform: Platform, public menuCtrl: MenuController) {
     
     firebase.initializeApp(firebaseConfig);
-
+    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -49,7 +49,7 @@ export class MyApp {
           break;
       }
 
-    }, 100);
+    }, 0);
 
   }
 

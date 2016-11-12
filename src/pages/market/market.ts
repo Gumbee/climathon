@@ -12,11 +12,12 @@ declare var google;
 })
 export class MarketPage {
 
-	private map: any;
-    private markers: any[] = [];
+	map: any =  {};
+    markers: any[] = [];
 
-    private events: any = [];
-	private filteredEvents;
+    events: any = [];
+    otherEvents: any = [];
+	filteredEvents: any = [];
 
 	constructor(public navCtrl: NavController, private platform: Platform, private dataService: DataService) {
 		this.map = null;
@@ -77,18 +78,15 @@ export class MarketPage {
 		let val = event.target.value;
 
 		if (val && val.trim() != '') {
-			console.log("Check1");
 			this.filteredEvents = this.events.filter((item) => {
-				console.log("Check2");
 		      	let found = false;
 		      	
 		      	if(item.tags != undefined){
 			      	for(let tag of item.tags){
-						console.log("Check3");
 			      		if(tag.toLowerCase().indexOf(val.toLowerCase()) > -1) found = true;
 			      	}
 	      		}
-	      		
+
 		        return found ||(item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 	      	});
 	    }
@@ -98,7 +96,7 @@ export class MarketPage {
 	    }
 	}
 
-	onClear(){
+	onClear(event: any){
     	this.filteredEvents = this.events;
 	}
 

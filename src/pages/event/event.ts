@@ -1,4 +1,4 @@
-import { Component, ApplicationRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, Platform, NavParams, AlertController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
@@ -13,12 +13,12 @@ declare var google;
 export class EventPage {
 
 	// contains the map's DOM-element
-	private map: any;
+	map: any = {};
 
 	// the id of the event that the user would like to look at
-    private id: string;
-    private fundPercentage = 0;
-    private event: any = {};
+    private id: string = "";
+    fundPercentage = 0;
+    event: any = {};
 
 	constructor(public navCtrl: NavController, private platform: Platform, private navParams: NavParams, private alertCtrl: AlertController, private dataService: DataService) {
 		this.id = navParams.data.id;
@@ -42,7 +42,6 @@ export class EventPage {
     	let counter = 0;
 		let fundedBy = "";
 		let eventRes = this.event.resources;
-		console.log("Start: " + JSON.stringify(eventRes));
 
 		if(eventRes != undefined && eventRes.length > 0){
 
@@ -77,7 +76,6 @@ export class EventPage {
 				this.event.sponsors = "by " + fundedBy;
 			}
 		}else{
-			console.log("RESOUT: " + JSON.stringify(eventRes));
 			this.event.sponsors = "by nobody because no funds are necessary";
 			this.fundPercentage = 100;
 		}

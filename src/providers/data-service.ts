@@ -12,9 +12,9 @@ import firebase from 'firebase';
 @Injectable()
 export class DataService {
 
-	private db: any;
-	private events: any;
-	private auth: any;
+	private db: any = {};
+	private events: any = {};
+	private auth: any = {};
 
 	constructor(public http: Http) {
 		// add reference to firbase database
