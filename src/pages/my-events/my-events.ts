@@ -13,7 +13,6 @@ export class MyEventsPage {
 
 	segment: string = 'myEvents';
 
-	// hardcoded data: will be replaced by data from Firebase soon...
 	eventsUpcoming : any = [];
 	eventsFinished : any = [];
 	myEvents : any = [];

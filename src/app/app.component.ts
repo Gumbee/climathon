@@ -14,7 +14,7 @@ import { MyEventsPage } from '../pages/my-events/my-events'
 })
 export class MyApp {
   @ViewChild('content') navCtrl;
-  rootPage = MyEventsPage;
+  rootPage = ProfilePage;
 
   constructor(platform: Platform, public menuCtrl: MenuController) {
     

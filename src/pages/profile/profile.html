@@ -38,12 +38,19 @@
 			Lorem ipsum dolor sit amet, vel et vitae interpretaris, duo errem mnesarchum at, illum mucius ea quo. Sint phaedrum ut qui, postea singulis mei in. 
 			</p></ion-item>
 			<ion-item-divider light>Upcoming Events</ion-item-divider>
+			<ion-item *ngIf="!events.length > 0" tappable>
+				<ion-avatar item-left>
+					<img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/roadblock-256.png">
+				</ion-avatar>
+				<h2>No Events</h2>
+				<p>More events coming soon...</p>
+			</ion-item>
 			<ion-item *ngFor="let event of events" tappable (click)="openEvent(event.id)">
 				<ion-avatar item-left>
 			      <img src="{{event.icon}}">
 			    </ion-avatar>
 			    <h2>{{event.name}}</h2>
-    			<p>{{event.street}}, {{event.place}}, {{event.city}}</p>
+    			<p>{{event.address}}</p>
 			</ion-item>
 			<ion-item-divider light>Achivements</ion-item-divider>
 				<ion-item>
