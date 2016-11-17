@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, NavParams, AlertController } from 'ionic-angular';
+import { AlertController, NavController, NavParams, Platform } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
 
@@ -16,9 +16,9 @@ export class EventPage {
 	map: any = {};
 
 	// the id of the event that the user would like to look at
-    private id: string = "";
-    fundPercentage = 0;
-    event: any = {};
+	id: string = "";
+	fundPercentage = 0;
+	event: any = {};
 
 	constructor(public navCtrl: NavController, private platform: Platform, private navParams: NavParams, private alertCtrl: AlertController, private dataService: DataService) {
 		this.id = navParams.data.id;
@@ -28,14 +28,20 @@ export class EventPage {
 
 			this.initializeMap();
 			this.getFundPercentageAndSponsors();
+			this.getAddress();
 		}).catch(()=>{
 
 		});
 
 	}
 
-	ionViewDidLoad(){
-		
+	getAddress(){
+		let address = this.event.address.split(",");
+		this.event.place = address[0];
+
+		address.splice(0, 1);
+
+		this.event.region = address.join(", ");
 	}
 
     getFundPercentageAndSponsors(){
@@ -115,6 +121,7 @@ export class EventPage {
     }
 
     checkResource(id: number){
+    	// ask the user (via alert) if he really wants to provide that resource
     	if(this.event.resources[id].done == 0){
 	    	let alert = this.alertCtrl.create({
 				title: 'Confirm',

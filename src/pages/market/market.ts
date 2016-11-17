@@ -13,18 +13,20 @@ declare var google;
 export class MarketPage {
 
 	map: any =  {};
-    markers: any[] = [];
+	markers: any[] = [];
 
-    events: any = [];
-    otherEvents: any = [];
+	events: any = [];
+	otherEvents: any = [];
 	filteredEvents: any = [];
 
 	constructor(public navCtrl: NavController, private platform: Platform, private dataService: DataService) {
 		this.map = null;
 		
-		dataService.getEvents().then((data)=>{
-			this.events = data;
+		dataService.getEvents().then((data: any)=>{
+			this.events = data.filter(this.filterEvents);
 			this.filteredEvents = this.events;
+
+			this.initializeMarkers();
 		}).catch(()=>{
 		});
 
@@ -33,6 +35,10 @@ export class MarketPage {
 
 	ionViewDidLoad(){
 		this.initializeMap();
+	}
+
+	filterEvents(event: any){
+		return event.finished == false;
 	}
 
 	initializeMap() {
@@ -49,29 +55,31 @@ export class MarketPage {
 
 	            this.map = new google.maps.Map(mapElement, mapOptions);
 
-		        for(let i=0;i<this.events.length;i++){
-
-		            let iconOptions = {
-			            url: 'assets/markerSlim.png',
-			            scaledSize: new google.maps.Size(27, 40),
-			        };
-
-		        	let markerOptions = {
-			            map: this.map,
-			            animation: google.maps.Animation.DROP,
-			            draggable: false,
-			            icon: iconOptions,
-			            scaledSize: new google.maps.Size(32, 32),
-			            position: new google.maps.LatLng(this.events[i].lat, this.events[i].long)
-			        };
-
-	            	let marker = new google.maps.Marker(markerOptions);
-
-			        this.markers.push([marker, i]);
-		        }
-
 	        }, 200);
 	    });
+	}
+
+	initializeMarkers(){
+		for(let i=0;i<this.events.length;i++){
+
+            let iconOptions = {
+	            url: 'assets/markerSlim.png',
+	            scaledSize: new google.maps.Size(27, 40),
+	        };
+
+        	let markerOptions = {
+	            map: this.map,
+	            animation: google.maps.Animation.DROP,
+	            draggable: false,
+	            icon: iconOptions,
+	            scaledSize: new google.maps.Size(32, 32),
+	            position: new google.maps.LatLng(this.events[i].lat, this.events[i].lng)
+	        };
+
+        	let marker = new google.maps.Marker(markerOptions);
+
+	        this.markers.push([marker, i]);
+        }
 	}
 
 	onSearchInput(event: any){

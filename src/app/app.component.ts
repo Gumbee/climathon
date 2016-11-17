@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { MenuController, Platform } from 'ionic-angular';
+import { Splashscreen, StatusBar } from 'ionic-native';
 import { firebaseConfig } from '../../config/config';
 import firebase from 'firebase';
 
@@ -14,7 +14,7 @@ import { MyEventsPage } from '../pages/my-events/my-events'
 })
 export class MyApp {
   @ViewChild('content') navCtrl;
-  rootPage = MarketPage;
+  rootPage = MyEventsPage;
 
   constructor(platform: Platform, public menuCtrl: MenuController) {
     

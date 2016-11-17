@@ -40,14 +40,21 @@
 				<button ion-fab mini (click)="createEvent()"><ion-icon name="add"></ion-icon></button>
 			</ion-fab>
 			<ion-item-divider light>Created Events</ion-item-divider>
-			<ion-item *ngFor="let event of filteredMyEvents" tappable>
+			<ion-item *ngFor="let event of filteredMyEvents" tappable (click)="openEvent(event.id)">
 			    <ion-avatar item-left>
 					<ion-badge *ngIf="event.likes" color="secondary" style="position: absolute;bottom: 7px;left: 10px;">{{event.likes}}<ion-icon name="ios-heart" style="color:red;font-size:1.3rem;margin-left: 2px;"></ion-icon></ion-badge>
 					<img src="{{event.icon}}">
 				</ion-avatar>
 				<h2>{{event.name}}</h2>
-				<p>{{event.street}}, {{event.city}}</p>
+				<p>{{event.address}}</p>
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
+			</ion-item>
+			<ion-item *ngIf="!filteredMyEvents.length" tappable>
+				<ion-avatar item-left>
+					<img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/roadblock-256.png">
+				</ion-avatar>
+				<h2>No Events</h2>
+				<p>More events coming soon...</p>
 			</ion-item>
 		</ion-list>
 
@@ -59,7 +66,7 @@
 					<img src="{{event.icon}}">
 				</ion-avatar>
 				<h2>{{event.name}}</h2>
-				<p>{{event.street}}, {{event.place}}, {{event.city}}</p>
+				<p>{{event.address}}, {{event.city}}</p>
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
 			</ion-item>
 			<ion-item-divider light>Finished Events</ion-item-divider>
@@ -69,7 +76,7 @@
 					<img src="{{event.icon}}">
 				</ion-avatar>
 				<h2>{{event.name}}</h2>
-				<p>{{event.street}}, {{event.place}}, {{event.city}}</p>
+				<p>{{event.address}}, {{event.city}}</p>
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
 			</ion-item>
 		</ion-list>

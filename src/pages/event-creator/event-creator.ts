@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ProfilePage } from '../../pages/profile/profile';
 import { DataService } from '../../providers/data-service';
+import { ProfilePage } from '../../pages/profile/profile';
 
 declare var google;
 
@@ -17,33 +17,41 @@ export class EventCreatorPage {
 	@ViewChild('input') input: any;
 
 	eventAnimation: any = {
-		display: false,
 		circleIn: false,
+		display: false,
 		fadeIn: false,
-		textShow: false,
+		loaderShow: false,
 		textFade: false,
 		textMsg: 'Event created.',
-		loaderShow: false
+		textShow: false
 	};
 	eventForm: any = {
-		name:'',
-		description:'',
 		address: '',
-		date:'2016-10-04',
 		beginTime:'01:33',
+		date:'2016-10-04',
+		description:'',
+		finished: false,
 		// For now we randomly generate the likes and the participants
-		participants: Math.floor(Math.random() * 50),
-		likes: Math.floor(Math.random() * 2)>0?Math.floor(Math.random() * 10):0,
 		friends: Math.floor(Math.random() * 3)>1?Math.floor(Math.random() * 8):0,
-		points: 0,
 		icon: 'https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/location-256.png',
-		resources:[]
+		likes: Math.floor(Math.random() * 2)>0?Math.floor(Math.random() * 10):0,
+		name:'',
+		participants: Math.floor(Math.random() * 50),
+		participating: true,
+		points: 0,
+		resources:[],
+		userID: 1
 	};
-	resource: any = {name:'',done:0,doneBy:''};
+	resource: any = {
+		name:'',
+		done:0,
+		doneBy:''
+	};
 
 	constructor(public navCtrl: NavController, private _dataService: DataService) {
 		let date: Date = new Date();
 
+		// set the date placeholder to the current date
 		this.eventForm.date = date.getFullYear()+"-"+('0' + (date.getMonth()+1)).slice(-2)+"-"+('0' + date.getDate()).slice(-2);
 		this.eventForm.beginTime = ('0' + date.getHours()).slice(-2)+":"+('0' + date.getMinutes()).slice(-2);
 	}
@@ -52,9 +60,10 @@ export class EventCreatorPage {
 		if(this.resource.name !== undefined && this.resource.name.trim() != ''){
 			this.eventForm.resources.push(this.resource);
 			this.resource = {name:'',done:0,doneBy:''};
+			this.input.setFocus();
+
 			setTimeout(()=>{
 				this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
-				this.input.setFocus();
 			},0);	
 		}
 	}
@@ -69,8 +78,12 @@ export class EventCreatorPage {
 		if(this.isValidForm()){
 			this.animateSubmit();
 			this.getLatLng().then((results)=>{
+				
 				this.eventForm.lat = results[0].geometry.location.lat();
 				this.eventForm.lng = results[0].geometry.location.lng();
+				this.eventForm.address = results[0].formatted_address;
+				this.formatAddress();
+
 				this._dataService.createEvent(this.eventForm).then(()=>{
 					setTimeout(()=>{
 						this.animateText();
@@ -109,6 +122,12 @@ export class EventCreatorPage {
 			  }
 			});
 		});
+	}
+
+	formatAddress(){
+		let address = this.eventForm.address.split(",");
+		address.splice(address.length-1, 1);
+		this.eventForm.address = address.join(", ");
 	}
 
 	isValidForm(){
