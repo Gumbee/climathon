@@ -26,6 +26,7 @@ export class EventPage {
 		this.dataService.getEvent(this.id).then((event)=>{
 			this.event = event;
 
+			this.realtimeUpdate();
 			this.initializeMap();
 			this.getFundPercentageAndSponsors();
 			this.getAddress();
@@ -136,14 +137,50 @@ export class EventPage {
 		          text: 'Yes',
 		          handler: () => {
 			    	this.event.resources[id].done = 1;
-			    	this.event.resources[id].doneBy = "Joe Doe";
+			    	this.event.resources[id].doneBy = "OneTeam";
 			    	this.getFundPercentageAndSponsors();
+    				this.dataService.updateEventResources(this.id, id, {'done': this.event.resources[id].done});
+    				this.dataService.updateEventResources(this.id, id, {'doneBy': this.event.resources[id].doneBy});
 		          }
 		        }
 		      ]
 			});
 			alert.present();
 		}
+    }
+
+    likeEvent(){
+    	this.dataService.updateEventLikes(this.id, this.event.likes+1);
+    	this.event.likes += 1;
+    	console.log("Done");
+    }
+
+    realtimeUpdate(){
+    	let reference = this.dataService.getEventsReference().child(this.id);
+
+		reference.on('value', (data)=>{
+			if(data){
+				let temp = data.val();
+				temp.id = this.id;
+
+				let madeChanges = false;
+
+				if(temp.resources){
+					for(let i=0;i<temp.resources.length;i++){
+						if(this.event.resources[i].done != temp.resources[i].done){
+							temp.resources[i].id = i;
+							this.event.resources[i] = temp.resources[i];
+							madeChanges = true;
+						}
+					}
+				}
+
+				if(madeChanges){
+					this.getFundPercentageAndSponsors();
+				}
+			}else{
+			}
+		});
     }
 
 }

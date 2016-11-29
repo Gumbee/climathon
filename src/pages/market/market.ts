@@ -30,6 +30,24 @@ export class MarketPage {
 		}).catch(()=>{
 		});
 
+		let reference = this.dataService.getEventsReference();
+
+		reference.on('value', (data)=>{
+			if(data){
+				data.forEach((event)=>{
+					let temp = event.val();
+
+					for(let i=0;i<this.events.length;i++){
+						if(this.events[i].id == event.key && this.events[i].likes != temp.likes){
+							this.events[i].likes = temp.likes;
+							console.log("changed " + this.events[i]);
+						}
+					}
+
+				});
+			}
+		});
+
 		this.filteredEvents = this.events;
 	}
 
@@ -60,6 +78,12 @@ export class MarketPage {
 	}
 
 	initializeMarkers(){
+		if(this.map == undefined){
+			setTimeout(()=>{
+				this.initializeMarkers();
+			}, 500);
+			return;
+		}
 		for(let i=0;i<this.events.length;i++){
 
             let iconOptions = {
@@ -77,7 +101,7 @@ export class MarketPage {
 	        };
 
         	let marker = new google.maps.Marker(markerOptions);
-
+	        
 	        this.markers.push([marker, i]);
         }
 	}

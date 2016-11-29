@@ -35,6 +35,24 @@ export class MyEventsPage {
 		}).catch(()=>{
 		});
 
+		let reference = this.dataService.getEventsReference();
+
+		reference.on('value', (data)=>{
+			if(data){
+				data.forEach((event)=>{
+					let temp = event.val();
+
+					for(let i=0;i<this.myEvents.length;i++){
+						if(this.myEvents[i].id == event.key && this.myEvents[i].likes != temp.likes){
+							this.myEvents[i].likes = temp.likes;
+							console.log("changed " + this.myEvents[i]);
+						}
+					}
+
+				});
+			}
+		});
+
 		this.filteredMyEvents = this.myEvents;
 		this.filteredEventsFinished = this.eventsFinished;
 		this.filteredEventsUpcoming = this.eventsUpcoming;

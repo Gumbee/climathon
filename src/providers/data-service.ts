@@ -79,4 +79,28 @@ export class DataService {
 		})
 	}
 
+	updateEventLikes(id, value) {
+		let reference = this.events.child(id);
+
+		reference.once('value', (data)=>{
+			if(data){
+				reference.update({'likes': value});
+			}
+		});
+	}
+
+	updateEventResources(id, resourceId, value) {
+		let reference = this.events.child(id + '/resources/' + resourceId);
+
+		reference.once('value', (data)=>{
+			if(data){
+				reference.update(value);
+			}
+		});
+	}
+
+	getEventsReference(){
+		return this.events;
+	}
+
 }
