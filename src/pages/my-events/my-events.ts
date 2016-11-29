@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 import { EventPage } from '../../pages/event/event'
 import { EventCreatorPage } from '../../pages/event-creator/event-creator'
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-my-events',

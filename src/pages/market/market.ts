@@ -3,6 +3,7 @@ import { NavController, Platform } from 'ionic-angular';
 
 import { EventPage } from '../../pages/event/event';
 import { DataService } from '../../providers/data-service';
+import firebase from 'firebase';
 
 declare var google;
 

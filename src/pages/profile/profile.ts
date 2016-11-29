@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
 import { EventPage } from '../../pages/event/event';
+import firebase from 'firebase';
 
 /*
   Generated class for the Profile page.
