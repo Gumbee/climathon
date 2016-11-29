@@ -26,7 +26,7 @@
 
 <ion-content>
 	<div class="profile-dashboard">
-		<img class="avatar" src="http://image.flaticon.com/icons/svg/236/236832.svg" />
+		<img class="avatar" src="/assets/man.png" />
 		<p>Developer, Entrepeneur</p>
 		<p>Zürich, CH</p>
 	</div>
@@ -38,7 +38,7 @@
 			Lorem ipsum dolor sit amet, vel et vitae interpretaris, duo errem mnesarchum at, illum mucius ea quo. Sint phaedrum ut qui, postea singulis mei in. 
 			</p></ion-item>
 			<ion-item-divider light>Upcoming Events</ion-item-divider>
-			<ion-item *ngIf="!events.length > 0" tappable>
+			<ion-item *ngIf="!(events.length > 0)" tappable>
 				<ion-avatar item-left>
 					<img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/roadblock-256.png">
 				</ion-avatar>

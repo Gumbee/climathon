@@ -38,7 +38,7 @@
 				<p>{{event.address}}</p>
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
 			</ion-item>
-			<ion-item *ngIf="!filteredEvents.length > 0" tappable>
+			<ion-item *ngIf="!(filteredEvents.length > 0)" tappable>
 				<ion-avatar item-left>
 					<img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/roadblock-256.png">
 				</ion-avatar>
@@ -55,7 +55,7 @@
 				<p>{{event.street}}, {{event.place}}, {{event.city}}</p>
 				<ion-badge *ngIf="event.friends" item-right>{{event.friends}} Friends</ion-badge>
 			</ion-item>
-			<ion-item *ngIf="!otherEvents.length > 0" tappable>
+			<ion-item *ngIf="!(otherEvents.length > 0)" tappable>
 				<ion-avatar item-left>
 					<img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/roadblock-256.png">
 				</ion-avatar>

@@ -20,6 +20,8 @@ export class EventPage {
 	fundPercentage = 0;
 	event: any = {};
 
+	liked = false;
+
 	constructor(public navCtrl: NavController, private platform: Platform, private navParams: NavParams, private alertCtrl: AlertController, private dataService: DataService) {
 		this.id = navParams.data.id;
 
@@ -30,6 +32,7 @@ export class EventPage {
 			this.initializeMap();
 			this.getFundPercentageAndSponsors();
 			this.getAddress();
+			this.liked = false;
 		}).catch(()=>{
 
 		});
@@ -150,9 +153,13 @@ export class EventPage {
     }
 
     likeEvent(){
+    	if(this.liked == true){
+    		return;
+    	}
     	this.dataService.updateEventLikes(this.id, this.event.likes+1);
     	this.event.likes += 1;
-    	console.log("Done");
+    	console.log("liked");
+    	this.liked = true;
     }
 
     realtimeUpdate(){
